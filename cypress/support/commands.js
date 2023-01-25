@@ -25,9 +25,28 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
+
 Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('#username').type(usuario)
-    cy.get('#password').type(senha, {log: false})
+    cy.get('#password').type(senha, { log: false })
     cy.get('.woocommerce-form > .button').click()
 });
 
+Cypress.Commands.add('addProdutos', (tamanho, cor) => {
+
+    cy.get('.button-variable-item-' + tamanho).click()
+    cy.get('.button-variable-item-' + cor).click()
+    cy.get('.single_add_to_cart_button').click()
+    cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
+
+})
+
+Cypress.Commands.add('confirmaIdentidade', (usuario, senha) => {
+
+    cy.get('.checkout-button').click()
+    cy.get('.showlogin').click()
+    cy.get('#username').type(usuario)
+    cy.get('#password').type(senha, { log: false })
+    cy.get('.woocommerce-button').click()
+    cy.get('a > .hidden-xs').should('contain', 'Welcome pedro_teste-5547')
+})

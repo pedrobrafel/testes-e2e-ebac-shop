@@ -10,10 +10,7 @@ class Checkout {
     finalizarComprar() {
         cy.get('[type="radio"]').check('cod')
         cy.get('#terms').should('not.be.checked').check()
-
         cy.get('#place_order').click()
-        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido')
-        cy.get('.woocommerce-order-overview__order').should('exist')
     }
 }
 

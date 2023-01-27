@@ -44,5 +44,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         enderecoEntrega.atualizarEnderecoFaturamento(nome, sobrenome, empresa, pais, endereco, cidade, estado, cep, telefone, email)
 
         checkout.finalizarComprar()
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido')
+        cy.get('.woocommerce-order-overview__order').should('exist')
     });
 })

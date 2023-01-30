@@ -12,10 +12,6 @@ context('Funcionalidade Login', () => {
         cy.visit('minha-conta')
     });
 
-    afterEach(() => {
-        cy.screenshot()
-    });
-
     it('Login com sucesso usando Comando customizado', () => {
         cy.login(dadosLogin.usuario, dadosLogin.senha)
         cy.get('.page-title').should('contain', 'Minha conta')

@@ -1,4 +1,5 @@
 {
   "baseUrl": "http://lojaebac.ebaconline.art.br/",
-  "defaultCommandTimeout": 30000
+  "defaultCommandTimeout": 30000,
+  "video": false
 }
